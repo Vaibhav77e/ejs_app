@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server</title>
+</head>
+<body>
+    <h1>
+        Login To your Account
+    </h1>
+    <form method="POST" action='/api/v1/user/loginUser'>
+        <div class="mb-3">
+            <label>Email address</label>
+            <input type="email" name="email" aria-describedby="emailHelp" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</body>
+</html>

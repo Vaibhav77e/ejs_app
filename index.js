@@ -4,6 +4,7 @@ const port = 3000
 const dotenv = require('dotenv');
 const path = require('path');
 const staticRoute = require('./routes/static_routes');
+const bodyParser = require('body-parser');
 // set up env file
 dotenv.config({path:'config.env'});
 
@@ -12,9 +13,10 @@ const database = require('./database/database');
 
 
 app.use(express.json());
-
+app.use(express.urlencoded());
 // supports form data
-app.use(express.urlencoded({extended:false}));
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 
 // import routes here
 const auth = require('./routes/auth/auth_routes');
