@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server</title>
+</head>
+<body>
+    <h1>
+        Login To your Account
+    </h1>
+    <form method="POST" action='/api/v1/contact/createNewContact'>
+        <div class="mb-3">
+            <label>Name</label>
+            <input type="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="mb-3">
+            <label>Phone Number</label>
+            <input type="phoneNumber" name="phoneNumber" placeholder="Enter your phoneNumber" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Contact</button>
+    </form>
+</body>
+</html>
