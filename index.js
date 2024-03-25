@@ -1,6 +1,19 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const dotenv = require('dotenv');
+
+// set up env file
+dotenv.config({path:'config.env'});
+
+// import database details
+const database = require('./database/database');
+
+
+app.use(express.json());
+
+// configure database
+database();
 
 app.set('view engine', 'ejs');
 
