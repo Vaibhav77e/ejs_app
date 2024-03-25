@@ -2,7 +2,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 const dotenv = require('dotenv');
-
+const path = require('path');
+const staticRoute = require('./routes/static_routes');
 // set up env file
 dotenv.config({path:'config.env'});
 
@@ -12,12 +13,25 @@ const database = require('./database/database');
 
 app.use(express.json());
 
+// supports form data
+app.use(express.urlencoded({extended:false}));
+
+// import routes here
+const auth = require('./routes/auth/auth_routes');
+
 // configure database
 database();
 
-app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
+app.set('view engine', 'ejs');
+app.set("views",path.resolve("./views"));
+
+// configure routes
+app.use('/api/v1',auth);
+app.use('/',staticRoute);
+
+
+app.get('/testContacts', (req, res) => {
   let contacts = [{
     "contactName":"Vaibhav",
     "contactNumber":"5896321489"
@@ -32,6 +46,10 @@ app.get('/', (req, res) => {
   },
 ]
   res.render("index",{contacts:contacts});
+});
+
+app.get('/testUrl',async(req, res) => {
+    return res.render("home");
 })
 
 app.listen(port, () => {

@@ -5,6 +5,8 @@ const bcrypt = require('bcryptjs');
 // register user
 exports.registerUser = async(req, res, next) => {
     try{
+
+        console.log('tr')
         const {name,email,phone,password} = req.body;
 
         let user = await User.find({email:email});
@@ -29,6 +31,10 @@ exports.registerUser = async(req, res, next) => {
                 message:"Something went wrong"
             });
         }
+
+        return res.status(200).json({
+            data: user
+        })
 
     }
     catch(err){
