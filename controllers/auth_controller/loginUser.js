@@ -1,5 +1,6 @@
 const User = require('../../models/user/user_models');
 const {sendToken} = require('../../utils/sendJWT');
+const Contacts = require('../../models/contacts/contacts_models');
 
 
 exports.LogInUser = async(req,res,next)=>{
@@ -27,10 +28,19 @@ exports.LogInUser = async(req,res,next)=>{
                message : "Password doesn't match"
            });
         }
-   
-       sendToken(user,200,res);
 
-       return res.render('contacts_view_screen/contacts_view');
+
+        console.log(`User ID : ${user.id}`);
+
+        const contacts = await Contacts.find({userId:user.id});
+
+        console.log(`Contacts : ${contacts}`);
+
+        const contactsArray =await Object.values(contacts);
+
+        console.log(`Contacts Array: ${contactsArray}`);
+   
+        await sendToken(user,200,res,contacts);
 
     }
     catch(err){

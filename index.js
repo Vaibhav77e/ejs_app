@@ -20,6 +20,7 @@ app.use(express.urlencoded());
 
 // import routes here
 const auth = require('./routes/auth/auth_routes');
+const contacts = require('./routes/contacts/contacts_routes');
 
 // configure database
 database();
@@ -30,6 +31,7 @@ app.set("views",path.resolve("./views"));
 
 // configure routes
 app.use('/api/v1',auth);
+app.use('/api/v1',contacts)
 app.use('/',staticRoute);
 
 

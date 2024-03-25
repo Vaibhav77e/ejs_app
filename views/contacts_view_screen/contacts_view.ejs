@@ -19,11 +19,12 @@
           <li class="list-group-item">
             <div class="d-flex align-items-center">
               <div class="rounded-circle bg-primary text-light mr-2" style="width: 30px; height: 30px; display: flex; justify-content: center; align-items: center;">
-                <%= contact.contactName.charAt(0).toUpperCase() %> <!-- Display the first letter of the contact's name dynamically -->
+                <!-- Display the first letter of the contact's name dynamically -->
+                <%= contact.name.charAt(0).toUpperCase() %>
               </div>
               <div>
-                <div><%= contact.contactName %></div> <!-- Display the actual contact name dynamically -->
-                <div><%= contact.contactNumber %></div> <!-- Display the actual contact number dynamically -->
+                <div><%= contact.name %></div> <!-- Display the actual contact name dynamically -->
+                <div><%= contact.phoneNumber %></div> <!-- Display the actual contact number dynamically -->
               </div>
             </div>
           </li>

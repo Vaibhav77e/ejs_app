@@ -13,6 +13,10 @@ const contactSchema = mongoose.Schema({
     phoneNumber:{
         type:String,
         required:true,
-        unique:[true,"You have already saved this contact to your account"],
     }
-})
+});
+
+
+const Contact = mongoose.model('Contact', contactSchema);
+
+module.exports = Contact;

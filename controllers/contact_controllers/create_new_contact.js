@@ -9,11 +9,20 @@ exports.createNewContact = async(req,res)=>{
         return res.status(404).json({message:"User not found"});
     }
     try{
-        let contact = Contact.create({
+        console.log(`Creating contact ${userId}`);
+        let contact = await Contact.find({userId: userId});
+
+        console.log(`Check : ${contact}`);
+
+        if(contact.phoneNumber===phoneNumber){
+            return res.status(400).json({message:"You have already added this contact"});
+        }
+
+         contact = await Contact.create({
                     userId: userId,
                     name:name,
                     phoneNumber:phoneNumber,
-                });
+        });
         if(!contact){
             return res.status(404).json({message:"Couldn't create contact,something went wrong"});
         }
