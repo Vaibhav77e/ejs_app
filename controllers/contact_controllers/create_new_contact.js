@@ -28,9 +28,11 @@ exports.createNewContact = async(req,res)=>{
             return res.status(404).json({message:"Couldn't create contact,something went wrong"});
         }
 
-        res.status(200).json({
-            data: contact
-        });
+        // res.status(200).json({
+        //     data: contact
+        // });
+
+        res.render('contacts_view_screen/contacts_view',{contact:contact});
     }catch(err){
         return res.status(500).json({message: err.message});
     }
