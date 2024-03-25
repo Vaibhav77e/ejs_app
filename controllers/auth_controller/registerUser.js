@@ -1,11 +1,11 @@
-const User = require('../../models/user_models');
+const User = require('../../models/user/user_models');
 const bcrypt = require('bcryptjs');
 
 
 // register user
 exports.registerUser = async(req, res, next) => {
     try{
-        const {name,email,password} = req.body;
+        const {name,email,phone,password} = req.body;
 
         let user = await User.find({email:email});
 
@@ -20,6 +20,7 @@ exports.registerUser = async(req, res, next) => {
          user = await User.create({
             name,
             email,
+            phone,
             password:hasedPassword
         });
 
@@ -28,7 +29,7 @@ exports.registerUser = async(req, res, next) => {
                 message:"Something went wrong"
             });
         }
-        
+
     }
     catch(err){
         res.status(500).json({
